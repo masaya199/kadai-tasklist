@@ -1,20 +1,20 @@
 class MessagesController < ApplicationController
   def index
-   @tasks = Tasks.all
+    @tasks = Task.all
   end
 
   def show
-   @task = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def new
-   @task = Task.new
+    @task = Task.new
   end
 
   def create
-      @task = Task.new(Task_params)
+    @task = Task.new(task_params)
 
-   if @task.save
+    if @task.save
       flash[:success] = 'Task が正常に投稿されました'
       redirect_to @message
     else
@@ -24,11 +24,11 @@ class MessagesController < ApplicationController
   end
 
   def edit
-     @task = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def update
-       @task = Task.find(params[:id])
+    @task = Task.find(params[:id])
 
     if @task.update(task_params)
       flash[:success] = 'Task は正常に更新されました'
@@ -40,7 +40,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-      @task = Task.find(params[:id])
+    @task = Task.find(params[:id])
     @task.destroy
 
     flash[:success] = 'Task は正常に削除されました'
